@@ -1,0 +1,36 @@
+<div class="section-container">
+    <h2>Register time</h2>
+    <form [formGroup]="registerTimeForm" (ngSubmit)="onSubmit(registerTimeForm.value)">
+        <div class="form-group row">
+            <label for="customerId" class="control-label col-md-2">Customer (required)</label>
+            <div class="col-md-5">
+                <select id="customerId" formControlName="customerId" (change)='onCustomerChange()'>
+                    <option *ngFor="let customer of customers" [ngValue]="customer.id">
+                        {{ customer.name }}
+                    </option>
+                    </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="projectId" class="control-label col-md-2">Project (required)</label>
+            <div class="col-md-5">
+                <select id="projectId" formControlName="projectId">
+                    <option *ngFor="let project of projects" [ngValue]="project.id">
+                        {{ project.name }}
+                    </option>
+                    </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="timeSpent" class="control-label col-md-2">Time spent (required)</label>
+            <div class="col-md-5">
+                <input id="timeSpent" type="number" formControlName="timeSpent"/> hours
+            </div>
+        </div>
+        <button class="btn btn-info" type="submit" [disabled]="!registerTimeForm.valid">{{ registerButtonText }}</button>
+        <div class="col-md-2">
+            <em id="errorMessage" style="color: red; font-weight: bold;" *ngIf="showError">There was an error registering the time. Please try again.</em>
+            <em id="successMessage" style="color:olivedrab; font-weight: bold;" *ngIf="showSuccess">Time registered.</em>
+        </div>
+    </form>
+</div>

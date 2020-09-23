@@ -1,0 +1,8 @@
+.git
+.gitignore
+TM/.vscode
+TM/node_modules
+TM/dist
+TM.API/.vscode
+TM.API/bin
+TM.API/obj

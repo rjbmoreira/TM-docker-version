@@ -1,0 +1,28 @@
+<div class="section-container">
+    <h2>Add customer</h2>
+    <form [formGroup]="addCustomerForm" (ngSubmit)="onSubmit(addCustomerForm.value)">
+        <div class="form-group row">
+            <label for="name" class="control-label col-md-2">Name (required)</label>
+            <div class="col-md-5">
+                <input id="name" type="text" formControlName="name" >
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="control-label col-md-2">Email</label>
+            <div class="col-md-5">
+                <input id="email" type="email" formControlName="email"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="phone" class="control-label col-md-2">Phone</label>
+            <div class="col-md-5">
+                <input id="phone" type="text" formControlName="phone"/>
+            </div>
+        </div>
+        <button class="btn btn-info" type="submit" [disabled]="!addCustomerForm.valid">{{ addButtonText }}</button>
+        <div class="col-md-2">
+            <em id="errorMessage" style="color: red; font-weight: bold;" *ngIf="showError">There was an error adding the customer. Please try again.</em>
+            <em id="successMessage" style="color:olivedrab; font-weight: bold;" *ngIf="showSuccess">Customer added.</em>
+        </div>
+    </form>
+</div>

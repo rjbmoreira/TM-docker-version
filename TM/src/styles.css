@@ -1,0 +1,15 @@
+html {
+    height: 100%;
+}
+
+body {
+    padding-top: 70px;
+}
+
+a {
+    color: #0846cc;
+}
+
+a:hover{
+    color: #08b5cc;
+}

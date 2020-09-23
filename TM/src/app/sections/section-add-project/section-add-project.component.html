@@ -1,0 +1,32 @@
+<div class="section-container">
+    <h2>Add project</h2>
+    <form [formGroup]="addProjectForm" (ngSubmit)="onSubmit(addProjectForm.value)">
+        <div class="form-group row">
+            <label for="name" class="control-label col-md-2">Name (required)</label>
+            <div class="col-md-5">
+                <input id="name" type="text" formControlName="name" >
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="customerId" class="control-label col-md-2">Customer (required)</label>
+            <div class="col-md-5">
+                <select id="customerId" formControlName="customerId">
+                <option *ngFor="let customer of customers" [ngValue]="customer.id">
+                    {{ customer.name }}
+                </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="control-label col-md-2">Description</label>
+            <div class="col-md-5">
+                <input id="description" type="text" formControlName="description"/>
+            </div>
+        </div>
+        <button class="btn btn-info" type="submit" [disabled]="!addProjectForm.valid">{{ addButtonText }}</button>
+        <div class="col-md-2">
+            <em id="errorMessage" style="color: red; font-weight: bold;" *ngIf="showError">There was an error adding the project. Please try again.</em>
+            <em id="successMessage" style="color:olivedrab; font-weight: bold;" *ngIf="showSuccess">Project added.</em>
+        </div>
+    </form>
+</div>
