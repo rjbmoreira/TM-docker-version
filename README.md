@@ -1,7 +1,9 @@
 # TM [dockerized version]
 Vestas assignment - Time Management
 
+Just for the learning experience, I wanted to dockerize the original solution.
 Based on http://github.com/rjbmoreira/TM with connection IP adjustments.
+
 After running docker-compose (with the supplied yml file) to launch it, find:
 * UI accessible on http://localhost:8080
 * .NET Core app accessible on http://localhost:5000
