@@ -1,0 +1,14 @@
+mode: ContinuousDeployment
+major-version-bump-message: '\[(breaking|major)\]\s+[A-Z]{2,11}-(\d{1,6})+:'
+minor-version-bump-message: '\[(feature|minor)\]\s+[A-Z]{2,11}-(\d{1,6})+:'
+patch-version-bump-message: '\[(fix|patch)\]\s+[A-Z]{2,11}-(\d{1,6})+:'
+no-bump-message: '\s?(no-bump)'
+assembly-file-versioning-format: '{MajorMinorPatch}.{env:BUILD_NUMBER ?? 0}'
+assembly-versioning-format: '{MajorMinorPatch}.{env:BUILD_NUMBER ?? 0}'
+assembly-informational-format: '{MajorMinorPatch}+{Sha}'
+branches:
+  feature:
+    # Match nothing
+    regex: ^\b$
+  main:
+    regex: ^master$|^main$

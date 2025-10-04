@@ -1,0 +1,31 @@
+name: Create Release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  CreateRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.0.0
+        with:
+          versionSpec: '6.1.0'
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v3.0.0
+        id: gitversion
+        with:
+          useConfigFile: true
+          configFilePath: ./git-version-config.yaml
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: 'v${{ steps.gitversion.outputs.semVer }}'
+          name: 'Release ${{ steps.gitversion.outputs.semVer }}'
+          generateReleaseNotes: true 
+    
+    
